@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TopNav</title>
+
+    <!--Підключення бібліотеки значків, щоб показувати значок меню (гамбургер) на мобільних екранах-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <style>
+body {
+  margin: 0;
+
+}
+
+.topnav {
+  overflow: hidden;
+ 
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  
+  color: #808080;
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  text-decoration: none;
+  margin-bottom: 23px;
+}
+
+.topnav a:not(.logo){
+    margin-top: 32px;
+}
+
+.topnav a:not(:last-child){
+    margin-right: 23px;
+}
+
+.topnav a.lastMenu{
+    margin-right: 0;
+}
+
+.topnav a:hover {
+  color: #3a78c9;
+}
+
+.topnav a.logo {
+  color: #3a78c9;
+  font-family: Raleway;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 31px;
+  margin-top: 23px;
+  padding-left: 15px;
+}
+
+.subLogo{
+    color: #000000;
+}
+
+.topnav .icon {
+  display: none;
+  font-size: 26px;
+  padding-right: 15px;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+
+    padding-left: 15px;
+  }
+}
+
+/* Слайдер-контейнер */
+.slider-container {
+    max-width: 100%;
+    position: relative;
+    margin: auto;
+}
+
+/* Приховати зображення за замовчуванням */
+.mySlides {
+    display: none;
+}
+
+/* Кнопки наступного та попереднього */
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -11.5%;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+/* Розташуйте кнопку «Далі» праворуч */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* При наведенні курсора додайте чорний колір фону з невеликою прозорістю */
+.prev:hover,
+.next:hover {
+    background-color: rgba(58, 120, 201, 0.8);
+}
+
+/* Точки/маркери/індикатори */
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active,
+.dot:hover {
+    background-color: #3a78c9;
+}
+
+/* Зникаюча анімація */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="topnav" id="myTopnav">
+  <a href="#home" class="logo">TRAVELER</a>
+  <a href="#services">Services</a>
+  <a href="#advantages">Advantages</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#contacts" class="lastMenu">Contacts</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+
+<!--слайдер-->
+<div class="mySlides fade">
+    <img src="./Group 1.png" style="width:100%" />
+</div>
+
+<div class="mySlides fade">
+    <img src="./Group 2.png" style="width:100%" />
+</div>
+
+
+
+<!-- Кнопки наступного та попереднього -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    
+    </div>
+    <br>
+
+    <!-- Крапки-кружечки -->
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        
+    </div>
+
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+
+
+let slideIndex = 1;
+showSlides(slideIndex);
+
+// Наступні/попередні елементи керування
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Елементи керування мініатюрним зображенням
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+</script>
+
+</body>
+</html>
